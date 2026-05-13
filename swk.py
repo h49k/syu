@@ -626,19 +626,14 @@ def main():
     table.add_row("")
     table.add_row("instagram Gmail")
     console.print(table)
-    print("/n")
+
     token = "7078974202:AAFDwyClQ6qdU3XZdH9Qm9UQS88wBBA0Dqg"
-    print("/n")
     chat_id = "6043225431"
 
     year_map = {
         "1": "2012", "2": "2013", "3": "2014", "4": "2015",
         "5": "2016", "6": "2017", "7": "2018", "8": "2019", "9": "2020"
     }
-
-    for ch in ["1", "2", "3", "4", "5", "6", "7", "8", "9"]:
-        year = year_map[ch]
-    
 
     uid_ranges = {
         "1": (210468786, 269736186),
@@ -651,6 +646,19 @@ def main():
         "8": (11254029834, 21254029834),
         "9": (40064475395, 43464475395),
     }
+
+    validator = AccountValidator(token, chat_id, "ALL")
+
+    from concurrent.futures import ThreadPoolExecutor
+
+    def run_year(ch):
+        year = year_map[ch]
+        uid1, uid2 = uid_ranges[ch]
+        collector = UserCollector(validator, uid1, uid2)
+        collector.start()
+
+    with ThreadPoolExecutor(max_workers=9) as executor:
+        executor.map(run_year, ["1","2","3","4","5","6","7","8","9"])
     
     os.system('clear')
     GoogleTLManager().fetch_new_tl()
