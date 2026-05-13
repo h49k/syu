@@ -619,7 +619,6 @@ class UserCollector:
 def main():
     console = Console()
     
-
     table = Table(show_header=False, box=box.ASCII, pad_edge=False)
     table.add_column(justify="center", width=30)
     table.add_row("The Tool By : DEW")
@@ -627,23 +626,18 @@ def main():
     table.add_row("")
     table.add_row("instagram Gmail")
     console.print(table)
-    
-    
+    print("/n")
+    token = "7078974202:AAFDwyClQ6qdU3XZdH9Qm9UQS88wBBA0Dqg"
+    print("/n")
+    chat_id = "6043225431"
 
-    
-    
-print("\n")
-token = ("7078974202:AAFDwyClQ6qdU3XZdH9Qm9UQS88wBBA0Dqg")
-print("\n")
-chat_id = ("6043225431")
+    year_map = {
+        "1": "2012", "2": "2013", "3": "2014", "4": "2015",
+        "5": "2016", "6": "2017", "7": "2018", "8": "2019", "9": "2020"
+    }
 
-year_map = {
-    "1": "2012", "2": "2013", "3": "2014", "4": "2015",
-    "5": "2016", "6": "2017", "7": "2018", "8": "2019", "9": "2020"
-}
-
-for ch in ["1", "2", "3", "4", "5", "6", "7", "8", "9"]:
-    year = year_map[ch]
+    for ch in ["1", "2", "3", "4", "5", "6", "7", "8", "9"]:
+        year = year_map[ch]
     
 
     uid_ranges = {
